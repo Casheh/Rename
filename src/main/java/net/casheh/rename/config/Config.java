@@ -23,9 +23,13 @@ public class Config {
 
     private String cleared;
 
+    private String blacklistedName;
+
     private int maxLength;
 
-    private List<String> blacklist;
+    private List<String> itemBlacklist;
+
+    private List<String> wordsBlacklist;
 
     public Config(Rename plugin) {
         this.plugin = plugin;
@@ -39,8 +43,10 @@ public class Config {
         this.tooLong = this.plugin.getConfig().getString("messages.too-long");
         this.successful = this.plugin.getConfig().getString("messages.successful");
         this.cleared = this.plugin.getConfig().getString("messages.cleared");
+        this.blacklistedName = this.plugin.getConfig().getString("messages.blacklisted-name");
         this.maxLength = this.plugin.getConfig().getInt("items.max-length");
-        this.blacklist = this.plugin.getConfig().getStringList("items.blacklist");
+        this.itemBlacklist = this.plugin.getConfig().getStringList("items.item-blacklist");
+        this.wordsBlacklist = this.plugin.getConfig().getStringList("items.keyword-blacklist");
     }
 
     public String getPrefix() {
@@ -67,14 +73,25 @@ public class Config {
         return getPrefix() + Util.color(this.cleared);
     }
 
+    public String getBlacklistedName() { return getPrefix() + Util.color(this.blacklistedName); }
+
     public int getMaxLength() {
         return this.maxLength;
     }
 
-    public boolean isBlacklisted(Material type) {
+    public boolean isItemBlacklisted(Material type) {
         List<Material> blacklist = new ArrayList<>();
-        this.blacklist.forEach(str -> blacklist.add(Material.valueOf(str)));
+        this.itemBlacklist.forEach(str -> blacklist.add(Material.valueOf(str)));
         return blacklist.contains(type);
+    }
+
+    public boolean isWordBlacklisted(String name) {
+        name = name.replaceAll("\\s", "");
+        for (String str : this.wordsBlacklist) {
+            if (Util.strip(Util.color(name)).toLowerCase().contains(str.toLowerCase()))
+                return true;
+        }
+        return false;
     }
 
 

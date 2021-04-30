@@ -63,12 +63,17 @@ public class RenameCommand implements CommandExecutor {
 
         if (p.getInventory().getItemInMainHand() != null && p.getInventory().getItemInMainHand().getType() != Material.AIR) {
             ItemStack hand = p.getInventory().getItemInMainHand();
-            if (plugin.getCfg().isBlacklisted(hand.getType()) && !p.hasPermission("rename.bypass")) {
+            if (plugin.getCfg().isItemBlacklisted(hand.getType()) && !p.hasPermission("rename.bypass")) {
                 p.sendMessage(plugin.getCfg().getInvalidItem());
                 return false;
             }
             String text = String.join(" ", args);
             ItemMeta meta = hand.getItemMeta();
+            if (plugin.getCfg().isWordBlacklisted(text) && !p.hasPermission("rename.bypass")) {
+                p.sendMessage(plugin.getCfg().getBlacklistedName());
+                return false;
+            }
+
             if (p.hasPermission("rename.color")) {
                 if (Util.strip(Util.color(text)).length() > plugin.getCfg().getMaxLength() && !p.hasPermission("rename.bypass")) {
                     p.sendMessage(plugin.getCfg().getTooLong());
