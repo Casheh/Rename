@@ -1,0 +1,6 @@
+name: Rename
+version: ${project.version}
+main: net.casheh.rename.Rename
+author: Casheh
+commands:
+  rename:

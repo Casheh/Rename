@@ -1,0 +1,17 @@
+messages:
+  prefix: '&b&lM&7&lM &r&8&l» &r'
+  no-permission: '&cYou do not have permission to do this!'
+  invalid-item: '&cYou do not have an item that can be renamed in your hand!'
+  too-long: '&cYou may not rename an item to a name with more than 20 characters!'
+  successful: '&aYou have successfully renamed this item!'
+items:
+  max-length: 20
+  blacklist:
+    - BEACON
+    - SPONGE
+    - PISTON_BASE
+    - PISTON_MOVING_PIECE
+    - PISTON_STICKY_BASE
+    - TRIPWIRE_HOOK
+    - PAPER
+    - NETHER_STAR
