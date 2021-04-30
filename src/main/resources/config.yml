@@ -4,6 +4,7 @@ messages:
   invalid-item: '&cYou do not have an item that can be renamed in your hand!'
   too-long: '&cYou may not rename an item to a name with more than 20 characters!'
   successful: '&aYou have successfully renamed this item!'
+  cleared: "&aYou have successfully cleared this item's name"
 items:
   max-length: 20
   blacklist:

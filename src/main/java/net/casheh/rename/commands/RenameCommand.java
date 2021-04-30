@@ -43,6 +43,7 @@ public class RenameCommand implements CommandExecutor {
             }
             plugin.getCfg().assign();
             sender.sendMessage(plugin.getCfg().getPrefix() + Util.color("&aConfiguration files reloaded!"));
+            return true;
         }
 
         if (args[0].equalsIgnoreCase("clear")) {
@@ -52,6 +53,8 @@ public class RenameCommand implements CommandExecutor {
                 meta.setDisplayName(null);
                 meta.setLore(null);
                 hand.setItemMeta(meta);
+                p.sendMessage(plugin.getCfg().getCleared());
+                return true;
             } else {
                 sender.sendMessage(plugin.getCfg().getInvalidItem());
                 return false;

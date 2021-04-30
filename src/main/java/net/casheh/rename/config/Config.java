@@ -21,6 +21,8 @@ public class Config {
 
     private String successful;
 
+    private String cleared;
+
     private int maxLength;
 
     private List<String> blacklist;
@@ -36,6 +38,7 @@ public class Config {
         this.invalidItem = this.plugin.getConfig().getString("messages.invalid-item");
         this.tooLong = this.plugin.getConfig().getString("messages.too-long");
         this.successful = this.plugin.getConfig().getString("messages.successful");
+        this.cleared = this.plugin.getConfig().getString("messages.cleared");
         this.maxLength = this.plugin.getConfig().getInt("items.max-length");
         this.blacklist = this.plugin.getConfig().getStringList("items.blacklist");
     }
@@ -58,6 +61,10 @@ public class Config {
 
     public String getSuccessful() {
         return getPrefix() + Util.color(this.successful);
+    }
+
+    public String getCleared() {
+        return getPrefix() + Util.color(this.cleared);
     }
 
     public int getMaxLength() {
