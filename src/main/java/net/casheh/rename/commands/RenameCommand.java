@@ -30,9 +30,9 @@ public class RenameCommand implements CommandExecutor {
         }
 
         if (args.length < 1) {
-            sender.sendMessage(plugin.getCfg() + Util.color("&cInvalid usage! Valid subcommands:"));
-            sender.sendMessage(plugin.getCfg() + Util.color("&cUsage: /rename <name>"));
-            sender.sendMessage(plugin.getCfg() + Util.color("&cUsage: /rename clear"));
+            sender.sendMessage(plugin.getCfg().getPrefix() + Util.color("&cInvalid usage! Valid subcommands:"));
+            sender.sendMessage(plugin.getCfg().getPrefix() + Util.color("&cUsage: /rename <name>"));
+            sender.sendMessage(plugin.getCfg().getPrefix() + Util.color("&cUsage: /rename clear"));
             return false;
         }
 
